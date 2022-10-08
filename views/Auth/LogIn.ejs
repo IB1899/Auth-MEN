@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <%- include("../partials/head.ejs") %> 
+</head>
+<body>
+    <div class="LogIn" >
+
+        <%- include("../partials/navbar.ejs")  %> 
+
+        <h1> Log in </h1>
+
+        
+        <form class="form">
+            <label for="email"> Email </label>
+            <input type="email" name="email" required maxlength="30"  class="email">
+
+            <label for="password"> Password </label>
+            <input type="password" name="password" required maxlength="25" class="password">
+            
+            <button > log in </button>
+
+        </form>
+
+        <h2 class="message"></h2>
+        
+    </div>  
+    
+
+    <!-- ! -->
+    <script>
+
+        let form = document.querySelector(".form")
+
+        let Send = async ()=>{
+
+            let email = document.querySelector(".email").value;
+            let password = document.querySelector(".password").value;
+
+            try{
+
+                let response = await fetch("/log-in" , {
+                   method:"POST" , headers:{"Content-Type":"application/json"},
+                   body:JSON.stringify({email , password})
+                });
+
+                let object = await response.json();
+
+               let message = document.querySelector(".message");
+
+                if(object.error){
+                    message.textContent = object.error;
+                    message.style.cssText = "color:darkred"
+
+                }
+                else{
+                    message.textContent = object.successful;
+                    message.style.cssText = "color:blue";
+
+                    setTimeout(()=>{
+                        location.assign("/")
+                    },1000)
+                }
+            }
+            catch(err){
+                console.log(err);
+            }
+        }
+
+        form.onsubmit = (e)=>{
+            e.preventDefault();
+            Send();
+        };
+
+
+
+    </script>
+</body>
+</html>

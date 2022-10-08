@@ -1,0 +1,23 @@
+
+<nav>
+    <div class="logo">Authentication</div>
+
+    <ul>
+        <% if(user){%>
+            
+            <h3> welcome <span> <%= user.email  %> </span> </h3>
+            <a href="/">Home</a>
+            <a href="/about" >About</a>
+            <a style="color:red;" href="/log-out" >Log out</a>
+
+        <% }else{ %>
+
+            <a href="/">Home</a>
+            <a href="/about" >About</a>
+            <a href="/sign-up" >SignUp</a>
+            <a href="/log-in" >LogIn</a>
+
+        <% } %> 
+        
+    </ul>
+</nav>

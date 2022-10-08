@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/head.ejs") %>
+</head>
+
+<body>
+    <div class="Home">
+        <%- include("./partials/navbar.ejs")  %> 
+
+        <h1>Home page</h1>
+
+        <% if(user){ %>
+            <h1> you are logged in </h1> 
+        <% }else{ %> 
+            <h1> you are not logged in </h1> 
+        <%} %> 
+
+    </div>
+
+
+</body>
+</html>

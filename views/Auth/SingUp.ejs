@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <%- include("../partials/head.ejs") %> 
+</head>
+<body>
+    <div class="SignUp" >
+
+        <%- include("../partials/navbar.ejs")  %> 
+
+        <h1> Sign Up </h1>
+
+        
+        <form class="form">
+            <label for="email"> Email </label>
+            <input type="email" name="email" required maxlength="30"  class="email">
+
+            <label for="password"> Password </label>
+            <input type="password" name="password" required maxlength="25" class="password">
+            
+            <button > Sign up </button>
+
+        </form>
+
+        <h2 class="message"></h2>
+        
+    </div>  
+    
+    
+    <!--*! JS  -->
+    <script>
+        
+        let form = document.querySelector(".form")
+
+        let Send = async ()=>{
+            
+            // let email = document.querySelector(".email").value;
+            // let password = document.querySelector(".password").value;
+            //! or
+            let email = form.email.value;
+            let password = form.password.value;
+
+            let data = { email , password };
+
+           try{
+                let response = await fetch("/sign-up" ,{
+                    method:"POST" , headers:{"Content-type":"application/json"},
+                    body:JSON.stringify(data)
+                })
+
+                let object = await response.json();
+
+                let message = document.querySelector(".message");
+                
+                if(object.email){
+                    message.innerText = ` ${object.email} ! `
+                    message.style.cssText = "color:rgb(131, 0, 0)";
+                }
+                else if(object.password){
+                    message.innerText = ` ${object.password} ! `
+                    message.style.cssText = "color:rgb(131, 0, 0)";
+                }
+                else{
+                    message.innerText = ` ${object.successful}. `;
+                    message.style.cssText = "color:#4bde02";
+                    console.log(object);
+
+                    document.querySelector(".email").value = "";
+                    document.querySelector(".password").value = "";
+
+                    setTimeout(()=>{
+                        // Redirect
+                        location.assign("/");
+                    },1000)
+                }
+            
+            }
+            catch(err){
+                console.log(err);
+            }
+        }
+
+        form.onsubmit = (e)=>{ 
+            e.preventDefault();
+            Send();
+        }
+
+    </script>
+</body>
+</html>

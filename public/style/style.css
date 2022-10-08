@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: red;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+body nav {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  background: white;
+}
+body nav .logo {
+  color: black;
+  font-size: 28px;
+  font-weight: 800;
+  margin: 15px;
+}
+body nav ul {
+  list-style: none;
+  margin: 25px 15px;
+  color: black;
+  display: flex;
+}
+body nav ul h3 {
+  margin: 0 20px;
+}
+body nav ul h3 span {
+  color: red;
+  font-weight: 700;
+}
+body nav ul a {
+  color: black;
+  text-decoration: none;
+  margin: 0 5px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 700;
+}
+body .Home h1 {
+  text-align: center;
+  padding-top: 30px;
+}
+body .About h1 {
+  text-align: center;
+  padding-top: 30px;
+}
+body .SignUp {
+  text-align: center;
+  color: white;
+}
+body .SignUp h1 {
+  padding-top: 30px;
+}
+body .SignUp form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  margin-bottom: 20px;
+}
+body .SignUp form label {
+  width: 300px;
+  text-align: left;
+  margin: 5px 0;
+}
+body .SignUp form input {
+  width: 300px;
+  background: none;
+  border: 1.5px solid white;
+  padding: 3px;
+  margin-bottom: 50px;
+  color: white;
+}
+body .SignUp form button {
+  color: white;
+  background: none;
+  border: 1px solid white;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+body .SignUp h2 {
+  color: rgb(131, 0, 0);
+  font-size: 19px;
+}
+body .LogIn {
+  text-align: center;
+  color: white;
+}
+body .LogIn h1 {
+  padding-top: 30px;
+}
+body .LogIn form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  margin-bottom: 20px;
+}
+body .LogIn form label {
+  width: 300px;
+  text-align: left;
+  margin: 5px 0;
+}
+body .LogIn form input {
+  width: 300px;
+  background: none;
+  border: 1.5px solid white;
+  padding: 3px;
+  margin-bottom: 50px;
+  color: white;
+}
+body .LogIn form button {
+  color: white;
+  background: none;
+  border: 1px solid white;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+body .LogIn h2 {
+  color: rgb(131, 0, 0);
+  font-size: 19px;
+}
