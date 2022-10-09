@@ -1,32 +1,32 @@
 import jwt from "jsonwebtoken";
-import {User} from "../model/User.js";
+import { User } from "../model/User.js";
 
 /** 
    *? Middleware for viewing pages by only Authenticated users, 
    *! Block the code if the user does`nt have jwt.
    *! Allow the code if the user has a jwt.
 */
-let AuthenticatedPages = (req , res , next)=>{
+let AuthenticatedPages = (req, res, next) => {
 
     let token = req.cookies.jwt;
 
     //? If user has a jwt do this
-    if(token){
-        jwt.verify(token , "The secret" , (err)=>{
+    if (token) {
+        jwt.verify(token, "The secret", (err) => {
 
             //? If user has a valid jwt do this
-            if(!err){
+            if (!err) {
                 next();
             }
             //? If user does`nt have a valid jwt do this
-            else{
+            else {
                 console.log(` Not valid token `);
                 res.redirect("/log-in");
             }
         })
     }
     //? If user does`nt have a jwt do this
-    else{
+    else {
         console.log(` There is no token`);
         res.redirect("/log-in")
     }
@@ -38,17 +38,17 @@ let AuthenticatedPages = (req , res , next)=>{
    *! Allow the code if the user not logged in, don`t do anything else.
    *! Allow the code if the user has a jwt , and pass their data to the views.
 */
-let CheckToken = (req , res , next)=>{
+let CheckToken = (req, res, next) => {
 
     let token = req.cookies.jwt;
 
     //? If user has a jwt do this
-    if(token){
+    if (token) {
 
-        jwt.verify(token , "The secret" , async (err,decodedToken)=>{
+        jwt.verify(token, "The secret", async (err, decodedToken) => {
 
             //? If user has a valid jwt do this
-            if(!err){
+            if (!err) {
                 //! we can access the user`s id from the token.
                 let id = decodedToken.id;
 
@@ -59,18 +59,17 @@ let CheckToken = (req , res , next)=>{
                 next();
             }
             //? If user does`nt have a valid jwt do this
-            else{
+            else {
                 res.locals.user = null;
                 next(); //* Allow the code if jwt is not valid , don`t do anything else.
             }
         })
     }
     //? If user does`nt have a jwt do this
-    else{ 
+    else {
         res.locals.user = null;
         next(); //* Allow the code if the user does`nt have jwt , don`t do anything else.
     }
-
 };
 
-export {AuthenticatedPages , CheckToken };
+export { AuthenticatedPages, CheckToken };

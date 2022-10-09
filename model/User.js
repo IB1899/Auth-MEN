@@ -23,7 +23,6 @@ let userSchema = new Schema({
     required: [true, "Please inter a password"],
     minlength: [8, "The password must be more then 7 characters"],
   }
-
 }, { timestamps: true });
 
 //? Fire this function after a document has created

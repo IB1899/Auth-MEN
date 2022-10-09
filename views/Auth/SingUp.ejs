@@ -10,8 +10,7 @@
         <%- include("../partials/navbar.ejs")  %> 
 
         <h1> Sign Up </h1>
-
-        
+       
         <form class="form">
             <label for="email"> Email </label>
             <input type="email" name="email" required maxlength="30"  class="email">
@@ -24,9 +23,8 @@
         </form>
 
         <h2 class="message"></h2>
-        
-    </div>  
     
+    </div>  
     
     <!--*! JS  -->
     <script>
@@ -74,7 +72,6 @@
                         location.assign("/");
                     },1000)
                 }
-            
             }
             catch(err){
                 console.log(err);
